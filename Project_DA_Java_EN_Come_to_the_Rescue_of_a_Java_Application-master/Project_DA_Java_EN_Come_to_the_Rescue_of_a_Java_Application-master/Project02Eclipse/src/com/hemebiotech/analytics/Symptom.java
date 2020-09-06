@@ -1,62 +1,31 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 
 public class Symptom {
-public 	String symptom;
-public boolean checked = false;
+/**
+ * this class is used to help in counting the symptoms 
+  * it contains also the function countResults this function pass through the file and it gets
+ * the symptoms to be counted one by one then it sort the final result by alphabetical order
+ */
 
-public Symptom(String symptom) {
-	this.symptom = symptom;
-	this.checked = false;
-}
-
-public static int findElement(String symptom,List<Symptom> symptoms) {
+public static  Map<String, Long> countResults(String path) {
 	
-	int countSymptom = 0;
-	
-	for (Iterator<Symptom> iterator = symptoms.iterator(); iterator.hasNext();) 
-	{
-        Symptom value = iterator.next();
-        if(value.symptom.equals(symptom))
-        {
-        	value.checked = true;
-             countSymptom ++;
-        }
-      }
-	return countSymptom;
-}
-
-
-public static ArrayList<String> countResults(String path) {
-	
-	List<Symptom> symptoms = new ArrayList<Symptom>();
-	ISymptomReader symptomReader = new ReadSymptomDataFromFile(path);
-	symptoms = symptomReader.GetSymptoms();
-	
-	ArrayList<String> results = new ArrayList<String>();
-	
-	Iterator<Symptom> ite = symptoms.iterator();
-	while(ite.hasNext())
-	{
-		Symptom currentSymptom = ite.next();
-		
-		if (!currentSymptom.checked)
-		{
-		int symptomCount = Symptom.findElement(currentSymptom.symptom, symptoms);
-		results.add(currentSymptom.symptom + ": " + symptomCount);
-		}
+		List<String> symptoms = new ArrayList<String>();
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile(path);
+		symptoms = symptomReader.GetSymptoms();
+		Map<String, Long> frequencyMap = symptoms.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		
 		
+		return frequencyMap;
 	}
-	
-	
-	Collections.sort(results);
-	return results;
-}
 }
 
 

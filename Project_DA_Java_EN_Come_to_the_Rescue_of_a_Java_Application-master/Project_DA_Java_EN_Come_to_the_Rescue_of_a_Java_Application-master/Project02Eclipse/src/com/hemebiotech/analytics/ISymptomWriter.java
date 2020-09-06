@@ -1,9 +1,14 @@
 package com.hemebiotech.analytics;
 
-import java.util.List;
+import java.util.HashMap;
+
+/**
+ * @author majd Zeidan
+ * this interface helps in writing the final result into output file result.out 
+ */
 
 public interface ISymptomWriter {
 	
-	void writeResult(List<String> results);
+	void writeResult(HashMap<String,Long> results);
 
 }
