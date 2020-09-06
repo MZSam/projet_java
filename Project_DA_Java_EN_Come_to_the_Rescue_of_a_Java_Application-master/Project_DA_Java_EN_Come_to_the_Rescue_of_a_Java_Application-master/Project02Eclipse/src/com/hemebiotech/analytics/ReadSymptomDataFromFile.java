@@ -23,8 +23,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 	
 	@Override
-	public List<String> GetSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
+	public List<Symptom> GetSymptoms() {
+		ArrayList<Symptom> result = new ArrayList<Symptom>();
 		
 		if (filepath != null) {
 			try {
@@ -32,7 +32,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				String line = reader.readLine();
 				
 				while (line != null) {
-					result.add(line);
+					Symptom symptom = new Symptom(line);
+					result.add(symptom);
 					line = reader.readLine();
 				}
 				reader.close();
