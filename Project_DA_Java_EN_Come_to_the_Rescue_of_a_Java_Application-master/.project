@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application-master</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src</name>
+			<type>2</type>
+			<location>C:/Users/m_zdn/eclipse-workspace/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application-master/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application-master/Project02Eclipse/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>
